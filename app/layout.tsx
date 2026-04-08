@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Roboto, Open_Sans } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import "@/styles/fonts.css";
 
@@ -25,15 +24,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className={`${roboto.variable} ${openSans.variable} antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${roboto.variable} ${openSans.variable} antialiased`}>
       <head>
         <link rel="icon" href="/sclogo.svg" type="image/svg+xml" />
       </head>
-      <body className="min-h-screen bg-background font-sans antialiased">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
-      </body>
+      <body className="min-h-screen bg-background font-sans antialiased">{children}</body>
     </html>
   );
 }
